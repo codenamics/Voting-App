@@ -1,5 +1,9 @@
+const jwt = require('jsonwebtoken')
+
 const db = require('../models')
+
 const validateRegisterInput = require('../validation/register')
+const validateLoginInput = require('../validation/login')
 
 exports.register = async (req, res, next) => {
     const {
@@ -16,16 +20,33 @@ exports.register = async (req, res, next) => {
             id,
             username
         } = user
-        res.json({
+        const token = jwt.sign({
             id,
             username
+        }, process.env.SECRET)
+        res.status(200).json({
+            id,
+            username,
+            token
         })
     } catch (error) {
-        return next(error)
+        if (error.code === 11000) {
+            return res.json(error.msg = "User already exist")
+
+        }
+        next(error)
     }
 }
 
 exports.login = async (req, res, next) => {
+    const {
+        errors,
+        isValid
+    } = validateLoginInput(req.body)
+    if (!isValid) {
+        return res.status(400).json(errors)
+    }
+
     try {
         const user = await db.User.findOne({
             username: req.body.username
@@ -36,14 +57,24 @@ exports.login = async (req, res, next) => {
         } = user
         const valid = await user.comparePassword(req.body.password)
         if (valid) {
-            res.json({
+            const token = jwt.sign({
                 id,
                 username
+            }, process.env.SECRET)
+            res.json({
+                id,
+                username,
+                token
             })
         } else {
-            throw new Error('Invalid username/password')
+            return res.status(400).json({
+                'error': 'Invalid credentials'
+            })
         }
     } catch (error) {
-        return next(error)
+        return res.status(400).json(
+            error.msg = 'Invalid credentials'
+        )
+
     }
 }
