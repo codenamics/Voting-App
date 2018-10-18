@@ -1,7 +1,16 @@
 const db = require('../models')
+const validateRegisterInput = require('../validation/register')
 
 exports.register = async (req, res, next) => {
+    const {
+        errors,
+        isValid
+    } = validateRegisterInput(req.body)
+
     try {
+        if (!isValid) {
+            return res.status(400).json(errors)
+        }
         const user = await db.User.create(req.body)
         const {
             id,
