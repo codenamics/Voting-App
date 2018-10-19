@@ -12,6 +12,6 @@ module.exports.notFound = (req, res, next) => {
 
 module.exports.errors = (err, req, res, next) => {
     res.status(err.status || 400).json({
-        err: err.message || 'Something went wrong'
+        message: err.message || 'Something went wrong'
     })
 }
