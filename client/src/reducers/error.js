@@ -1,7 +1,7 @@
 import {
     ADD_ERROR,
     REMOVE_ERROR
-} from '../actions/actionErrors'
+} from '../actions/types'
 
 export default (state = {}, action) => {
     switch (action.types) {
