@@ -1,31 +1,26 @@
 import React, { Component } from "react";
 import { Provider } from "react-redux";
-import store from "./store";
-import Test from "../src/components/test";
-import { setToken, setCurrentsUser } from "./actions/auth";
-import { addError } from "./actions/actionErrors";
 import decode from "jwt-decode";
+import store from "./store/store";
+import { setToken, setCurrentUser, addError } from "./store/actions";
+import Auth from "./components/Auth";
 
 if (localStorage.jwtToken) {
   setToken(localStorage.jwtToken);
   try {
-    store.dispatch(setCurrentsUser(decode(localStorage.jwtToken)));
-  } catch (error) {
-    store.dispatch(setCurrentsUser({}));
-    store.dispatch(addError(error));
+    store.dispatch(setCurrentUser(decode(localStorage.jwtToken)));
+  } catch (err) {
+    store.dispatch(setCurrentUser({}));
+    store.dispatch(addError(err));
   }
 }
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div>
-          <Test />
-        </div>
+        <Auth />
       </Provider>
     );
   }
 }
-
-export default App;
