@@ -5,7 +5,11 @@ import {
 } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers/rootReducer';
-const initialState = {};
+const initialState = {
+    auth: {
+        isAuthenticated: false
+    },
+};
 const middleware = [thunk];
 
 const store = createStore(rootReducer, initialState,
