@@ -8,10 +8,10 @@ const validateLoginInput = (data) => {
     data.password = !isEmpty(data.password) ? data.password : ''
 
     if (validator.isEmpty(data.username)) {
-        errors.username = 'Username is required'
+        errors.username = ''
     }
     if (validator.isEmpty(data.password)) {
-        errors.password = 'Password is required'
+        errors.password = ''
     }
     return {
         errors,

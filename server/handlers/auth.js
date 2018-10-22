@@ -31,7 +31,9 @@ exports.register = async (req, res, next) => {
         })
     } catch (error) {
         if (error.code === 11000) {
-            return res.json(error.msg = "User already exist")
+            return res.status(400).json({
+                'message': 'Username already taken'
+            })
 
         }
         next(error)
@@ -40,21 +42,28 @@ exports.register = async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
     const {
-        errors,
         isValid
     } = validateLoginInput(req.body)
     if (!isValid) {
-        return res.status(400).json(errors)
+        return res.status(400).json({
+            'message': 'Username and password is required'
+        })
     }
 
     try {
         const user = await db.User.findOne({
             username: req.body.username
         })
+        if (!user) {
+            return res.status(400).json({
+                'message': 'Invalid credentials'
+            })
+        }
         const {
             id,
             username
         } = user
+
         const valid = await user.comparePassword(req.body.password)
         if (valid) {
             const token = jwt.sign({
@@ -73,7 +82,7 @@ exports.login = async (req, res, next) => {
         }
     } catch (error) {
         return res.status(400).json(
-            error.msg = 'Invalid credentials'
+            error
         )
 
     }

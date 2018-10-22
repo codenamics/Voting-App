@@ -19,8 +19,9 @@ class Auth extends Component {
   }
   handleSubmit(e) {
     const { username, password } = this.state;
+    const { authType } = this.props;
     e.preventDefault();
-    this.props.authUser("login", { username, password });
+    this.props.authUser(authType, { username, password });
   }
 
   render() {
