@@ -68,7 +68,7 @@ exports.login = async (req, res, next) => {
             })
         } else {
             return res.status(400).json({
-                'error': 'Invalid credentials'
+                'message': 'Invalid credentials'
             })
         }
     } catch (error) {

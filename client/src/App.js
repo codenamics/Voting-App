@@ -4,6 +4,7 @@ import decode from "jwt-decode";
 import store from "./store/store";
 import { setToken, setCurrentUser, addError } from "./store/actions";
 import Auth from "./components/Auth";
+import ErrorMessage from "./components/ErrorMessage";
 
 if (localStorage.jwtToken) {
   setToken(localStorage.jwtToken);
@@ -19,7 +20,10 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Auth />
+        <div>
+          <Auth />
+          <ErrorMessage />
+        </div>
       </Provider>
     );
   }
