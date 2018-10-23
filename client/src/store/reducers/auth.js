@@ -2,6 +2,7 @@ import {
   SET_CURRENT_USER
 } from '../actionTypes';
 import isEmpty from '../../validation/is-empty'
+
 const DEFAULT_STATE = {
   isAuthenticated: false,
   user: {},
