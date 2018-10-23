@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 import AuthPage from "../layout/AuthPage";
 import { connect } from "react-redux";
+import Test from "../layout/Test";
 
 const Routes = ({ auth }) => {
   return (
@@ -29,6 +30,7 @@ const Routes = ({ auth }) => {
             />
           )}
         />
+        <Route exact path="/test" render={() => <Test />} />
       </Switch>
     </React.Fragment>
   );
