@@ -7,6 +7,7 @@ import store from "./store/store";
 import { setToken, setCurrentUser, addError } from "./store/actions";
 
 import Routes from "./components/Routes";
+import NavBar from "./layout/NavBar";
 
 if (localStorage.jwtToken) {
   setToken(localStorage.jwtToken);
@@ -24,6 +25,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <React.Fragment>
+            <NavBar />
             <Routes />
           </React.Fragment>
         </Router>
