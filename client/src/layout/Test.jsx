@@ -1,10 +1,10 @@
 import React from "react";
-import Polls from "../components/Polls";
+import Poll from "../components/Poll";
 
 export default function Test() {
   return (
     <div>
-      <Polls />
+      <Poll />
     </div>
   );
 }

@@ -138,17 +138,20 @@ exports.vote = async (req, res, next) => {
                 poll.options = vote;
                 await poll.save();
 
-                return res.status(202).json(poll);
+                return res.status(200).json(poll);
             } else {
-                throw new Error('Already voted');
+                return res.status(400).json({
+                    'message': 'Already voted'
+                })
             }
         } else {
-            throw new Error('No Answer Provided');
+            return res.status(400).json({
+                'message': 'No answer provided'
+            })
         }
     } catch (err) {
-        return next({
-            status: 400,
-            message: err.message,
-        });
+        return res.status(400).json({
+            'message': 'Error'
+        })
     }
 };
