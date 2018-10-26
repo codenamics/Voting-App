@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { vote } from "../store/actions";
+import { vote, deletePoll } from "../store/actions/polls";
+
 import { Pie } from "react-chartjs-2";
 
 const color = () => {
@@ -13,8 +14,18 @@ const color = () => {
 };
 
 class Poll extends Component {
+  constructor(props) {
+    super(props);
+    this.handlePollDelete = this.handlePollDelete.bind(this);
+  }
+  handlePollDelete() {
+    const { deletePoll, id } = this.props;
+    deletePoll(id);
+  }
+
   render() {
     const { poll, vote } = this.props;
+
     const answers =
       poll.question &&
       poll.options.map(option => (
@@ -37,10 +48,12 @@ class Poll extends Component {
         }
       ]
     };
+
     return (
       <div>
         <h3>{poll.question}</h3>
         <p>{answers}</p>
+        <button onClick={this.handlePollDelete}>delete</button>
         {poll.options && <Pie data={data} />}
       </div>
     );
@@ -49,7 +62,8 @@ class Poll extends Component {
 
 export default connect(
   state => ({
-    poll: state.currentPoll
+    poll: state.currentPoll,
+    auth: state.auth
   }),
-  { vote }
+  { vote, deletePoll }
 )(Poll);

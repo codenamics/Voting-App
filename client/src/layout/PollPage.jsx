@@ -7,7 +7,7 @@ const PollPage = ({ match, getPoll }) => {
   return (
     <div>
       <ErrorMessage />
-      <Poll />
+      <Poll id={match.params.id} />
     </div>
   );
 };

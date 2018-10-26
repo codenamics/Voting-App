@@ -73,7 +73,19 @@ export const getCurrentPoll = id => {
         }
     }
 }
-
+export const deletePoll = (id) => {
+    return async dispatch => {
+        try {
+            const poll = await api.call('delete', `poll/${id}`)
+            dispatch(setCurrentPolls(poll))
+            dispatch(removeError())
+        } catch (err) {
+            const
+                error = err.response.data;
+            dispatch(addError(error.message));
+        }
+    }
+}
 export const vote = (id, data) => {
     return async dispatch => {
         try {

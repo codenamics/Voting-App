@@ -31,9 +31,9 @@ class Polls extends Component {
           <div>
             <button onClick={getPolls}>All Polls</button>
             <button onClick={getUserPolls}>My Polls</button>
+            <ul>{allPolls}</ul>
           </div>
         ) : null}
-        <ul>{allPolls}</ul>
       </Fragment>
     );
   }

@@ -16,12 +16,10 @@ const NavBar = ({ auth, logout }) => {
         <li>
           <Link to="/login">Login</Link>
         </li>
-        <li>
-          <Link to="/test">Test</Link>
-        </li>
+
         {auth.isAuthenticated ? (
           <li>
-            <a onClick={logout}>Logout</a>
+            <button onClick={logout}>Logout</button>
           </li>
         ) : null}
         {auth.isAuthenticated ? <p>Logged in as {auth.user.username}</p> : null}

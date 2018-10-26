@@ -10,11 +10,11 @@ exports.register = async (req, res, next) => {
         errors,
         isValid
     } = validateRegisterInput(req.body)
-
+    if (!isValid) {
+        return res.status(400).json(errors)
+    }
     try {
-        if (!isValid) {
-            return res.status(400).json(errors)
-        }
+
         const user = await db.User.create(req.body)
         const {
             id,

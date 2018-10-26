@@ -2,7 +2,6 @@ import React from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 import AuthPage from "../layout/AuthPage";
 import { connect } from "react-redux";
-import Test from "../layout/Test";
 import Home from "../layout/Home";
 import { getCurrentPoll } from "../store/actions";
 import PollPage from "../layout/PollPage";
@@ -33,7 +32,7 @@ const Routes = ({ auth, getCurrentPoll }) => {
             />
           )}
         />
-        <Route exact path="/test" render={() => <Test />} />
+
         <Route
           exact
           path="/poll/:id"
