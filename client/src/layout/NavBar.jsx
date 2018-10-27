@@ -5,10 +5,10 @@ import { logout } from "../store/actions";
 
 const NavBar = ({ auth, logout }) => {
   return (
-    <div className="container">
-      <nav className="nav">
+    <div className="nav">
+      <nav className="nav__bar">
         <div>Logo</div>
-        <ul className="navbar">
+        <ul className="flex__row">
           {!auth.isAuthenticated ? (
             <React.Fragment>
               <li className="">
