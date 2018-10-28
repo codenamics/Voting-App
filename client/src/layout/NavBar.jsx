@@ -5,13 +5,13 @@ import { logout } from "../store/actions";
 
 const NavBar = ({ auth, logout }) => {
   return (
-    <div className="nav">
-      <nav className="nav__bar">
+    <nav className="nav">
+      <div className="nav-desktop">
         <div>Logo</div>
-        <ul className="flex__row">
+        <ul>
           {!auth.isAuthenticated ? (
             <React.Fragment>
-              <li className="">
+              <li>
                 <Link to="/">Home</Link>
               </li>
               <li>
@@ -34,8 +34,49 @@ const NavBar = ({ auth, logout }) => {
             </React.Fragment>
           ) : null}
         </ul>
-      </nav>
-    </div>
+      </div>
+      <div className="nav-mobile">
+        <input
+          type="checkbox"
+          className="nav-mobile__checkbox"
+          id="navi-toogle"
+        />
+        <label for="navi-toogle" className="nav-mobile__button">
+          <span className="nav-mobile__icon" />
+        </label>
+        <div className="nav-mobile__background" />
+        <div className="nav-mobile__nav">
+          <ul className="nav-mobile__list">
+            {!auth.isAuthenticated ? (
+              <React.Fragment>
+                <li className="nav-mobile__item">
+                  <Link to="/">Home</Link>
+                </li>
+                <li className="nav-mobile__item">
+                  <Link to="/register">Register</Link>
+                </li>
+                <li className="nav-mobile__item">
+                  <Link to="/login">Login</Link>
+                </li>
+              </React.Fragment>
+            ) : null}
+            {auth.isAuthenticated ? (
+              <React.Fragment>
+                <li className="nav-mobile__item">
+                  <Link to="/">Home</Link>
+                </li>
+                <li className="nav-mobile__item">
+                  <button onClick={logout}>Logout</button>
+                </li>
+                <li className="nav-mobile__item">
+                  Logged in as {auth.user.username}
+                </li>
+              </React.Fragment>
+            ) : null}
+          </ul>
+        </div>
+      </div>
+    </nav>
   );
 };
 
