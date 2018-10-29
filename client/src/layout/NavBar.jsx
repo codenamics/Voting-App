@@ -69,6 +69,9 @@ const NavBar = ({ auth, logout }) => {
                   <button onClick={logout}>Logout</button>
                 </li>
                 <li className="nav-mobile__item">
+                  <Link to="/poll/new">New</Link>
+                </li>
+                <li className="nav-mobile__item">
                   Logged in as {auth.user.username}
                 </li>
               </React.Fragment>

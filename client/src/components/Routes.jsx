@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import Home from "../layout/Home";
 import { getCurrentPoll } from "../store/actions";
 import PollPage from "../layout/PollPage";
+import CreatePollPage from "../layout/CreatePollPage";
 const Routes = ({ auth, getCurrentPoll }) => {
   return (
     <React.Fragment>
@@ -32,7 +33,13 @@ const Routes = ({ auth, getCurrentPoll }) => {
             />
           )}
         />
-
+        <Route
+          exact
+          path="/poll/new"
+          render={() => (
+            <CreatePollPage isAuthenticated={auth.isAuthenticated} />
+          )}
+        />
         <Route
           exact
           path="/poll/:id"
