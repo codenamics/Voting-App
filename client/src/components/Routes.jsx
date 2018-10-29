@@ -6,11 +6,13 @@ import Home from "../layout/Home";
 import { getCurrentPoll } from "../store/actions";
 import PollPage from "../layout/PollPage";
 import CreatePollPage from "../layout/CreatePollPage";
+import Dashboard from "../layout/Dashboard";
 const Routes = ({ auth, getCurrentPoll }) => {
   return (
     <React.Fragment>
       <Switch>
-        <Route exact path="/" render={props => <Home {...props} />} />
+        <Route exact path="/" render={props => <Dashboard {...props} />} />
+        <Route exact path="/home" render={props => <Home {...props} />} />
         <Route
           exact
           path="/login"

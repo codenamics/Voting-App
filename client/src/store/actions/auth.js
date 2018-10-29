@@ -7,6 +7,7 @@ import {
 } from '../actionTypes';
 import API from '../../services/api';
 
+
 export const setCurrentUser = user => ({
   type: SET_CURRENT_USER,
   user,
@@ -22,6 +23,7 @@ export const logout = () => {
     API.setToken(null);
     dispatch(setCurrentUser({}));
     dispatch(removeError());
+
   };
 };
 

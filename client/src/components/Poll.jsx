@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { vote, deletePoll } from "../store/actions/polls";
-
 import { Pie } from "react-chartjs-2";
 
 const color = () => {

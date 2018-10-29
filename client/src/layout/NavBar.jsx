@@ -12,7 +12,7 @@ const NavBar = ({ auth, logout }) => {
           {!auth.isAuthenticated ? (
             <React.Fragment>
               <li>
-                <Link to="/">Home</Link>
+                <Link to="/">Dashboard</Link>
               </li>
               <li>
                 <Link to="/register">Register</Link>
@@ -25,10 +25,15 @@ const NavBar = ({ auth, logout }) => {
           {auth.isAuthenticated ? (
             <React.Fragment>
               <li className="">
-                <Link to="/">Home</Link>
+                <Link to="/home">Home</Link>
               </li>
               <li>
-                <button onClick={logout}>Logout</button>
+                <Link to="/" onClick={logout}>
+                  Logout
+                </Link>
+              </li>
+              <li className="nav-mobile__item">
+                <Link to="/poll/new">New</Link>
               </li>
               <li>Logged in as {auth.user.username}</li>
             </React.Fragment>
@@ -49,8 +54,8 @@ const NavBar = ({ auth, logout }) => {
           <ul className="nav-mobile__list">
             {!auth.isAuthenticated ? (
               <React.Fragment>
-                <li className="nav-mobile__item">
-                  <Link to="/">Home</Link>
+                <li className="">
+                  <Link to="/">Dashboard</Link>
                 </li>
                 <li className="nav-mobile__item">
                   <Link to="/register">Register</Link>
@@ -63,10 +68,12 @@ const NavBar = ({ auth, logout }) => {
             {auth.isAuthenticated ? (
               <React.Fragment>
                 <li className="nav-mobile__item">
-                  <Link to="/">Home</Link>
+                  <Link to="/home">Home</Link>
                 </li>
                 <li className="nav-mobile__item">
-                  <button onClick={logout}>Logout</button>
+                  <Link to="/" onClick={logout}>
+                    Logout
+                  </Link>
                 </li>
                 <li className="nav-mobile__item">
                   <Link to="/poll/new">New</Link>
