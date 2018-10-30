@@ -28,17 +28,21 @@ class Auth extends Component {
     const { username, password } = this.state;
     const { headline } = this.props;
     return (
-      <div>
+      <div className="form">
         <form onSubmit={this.handleSubmit}>
           <h1>{headline}</h1>
-          <label htmlFor="username">Username</label>
+          <label className="label" htmlFor="username">
+            Username
+          </label>
           <input
             type="text"
             value={username}
             name="username"
             onChange={this.handleChange}
           />
-          <label htmlFor="password">Password</label>
+          <label className="label" htmlFor="password">
+            Password
+          </label>
           <input
             type="password"
             value={password}

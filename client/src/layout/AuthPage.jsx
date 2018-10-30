@@ -7,10 +7,10 @@ const AuthPage = ({ authType, headline, isAuthenticated }) => {
   if (isAuthenticated) return <Redirect to="/home" />;
 
   return (
-    <div>
+    <React.Fragment>
       <ErrorMessage />
       <Auth authType={authType} headline={headline} />
-    </div>
+    </React.Fragment>
   );
 };
 
