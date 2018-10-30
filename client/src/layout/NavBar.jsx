@@ -7,7 +7,7 @@ const NavBar = ({ auth, logout }) => {
   return (
     <nav className="nav">
       <div className="nav-desktop">
-        <div>Logo</div>
+        <div />
         <ul>
           {!auth.isAuthenticated ? (
             <React.Fragment>
@@ -32,7 +32,7 @@ const NavBar = ({ auth, logout }) => {
                   Logout
                 </Link>
               </li>
-              <li className="nav-mobile__item">
+              <li>
                 <Link to="/poll/new">New</Link>
               </li>
               <li>Logged in as {auth.user.username}</li>
@@ -54,7 +54,7 @@ const NavBar = ({ auth, logout }) => {
           <ul className="nav-mobile__list">
             {!auth.isAuthenticated ? (
               <React.Fragment>
-                <li className="">
+                <li className="nav-mobile__item">
                   <Link to="/">Dashboard</Link>
                 </li>
                 <li className="nav-mobile__item">

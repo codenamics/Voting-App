@@ -1,5 +1,6 @@
 @import 'nav.scss';
 @import 'form.scss';
+@import 'dashboard.scss';
 
 * {
   margin: 0;
@@ -15,4 +16,8 @@
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+a {
+  text-decoration: none;
 }
