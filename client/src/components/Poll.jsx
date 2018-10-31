@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { vote, deletePoll } from "../store/actions/polls";
+import { vote, deletePoll, getPolls } from "../store/actions/polls";
 import { Pie } from "react-chartjs-2";
 
 const color = () => {
@@ -17,6 +17,10 @@ class Poll extends Component {
   constructor(props) {
     super(props);
     this.handlePollDelete = this.handlePollDelete.bind(this);
+  }
+  componentWillUnmount() {
+    const { getPolls } = this.props;
+    getPolls();
   }
   handlePollDelete() {
     const { deletePoll, id, history } = this.props;
@@ -78,6 +82,6 @@ export default withRouter(
       poll: state.currentPoll,
       auth: state.auth
     }),
-    { vote, deletePoll }
+    { vote, deletePoll, getPolls }
   )(Poll)
 );

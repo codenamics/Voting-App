@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
-
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { createPoll } from "../store/actions";
+import { createPoll, getPolls } from "../store/actions";
 
 class CreatePoll extends Component {
   constructor(props) {
@@ -15,7 +15,10 @@ class CreatePoll extends Component {
     this.handleAnswer = this.handleAnswer.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
+  componentWillUnmount() {
+    const { getPolls } = this.props;
+    getPolls();
+  }
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -29,8 +32,9 @@ class CreatePoll extends Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    const { createPoll } = this.props;
+    const { createPoll, history } = this.props;
     createPoll(this.state);
+    history.push("/home");
   }
   render() {
     const options = this.state.options.map((option, i) => (
@@ -65,7 +69,9 @@ class CreatePoll extends Component {
   }
 }
 
-export default connect(
-  () => ({}),
-  { createPoll }
-)(CreatePoll);
+export default withRouter(
+  connect(
+    () => ({}),
+    { createPoll, getPolls }
+  )(CreatePoll)
+);
