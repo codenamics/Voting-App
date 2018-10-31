@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { vote, deletePoll } from "../store/actions/polls";
 import { Pie } from "react-chartjs-2";
 
@@ -19,13 +19,16 @@ class Poll extends Component {
     this.handlePollDelete = this.handlePollDelete.bind(this);
   }
   handlePollDelete() {
-    const { deletePoll, id } = this.props;
+    const { deletePoll, id, history } = this.props;
     deletePoll(id);
+    history.push("/home");
   }
 
   render() {
-    const { poll, vote } = this.props;
-
+    const { poll, vote, auth } = this.props;
+    console.log(auth.user.id);
+    const userIdPoll = poll.user && poll.user._id;
+    const userIdAuth = auth.user.id;
     const answers =
       poll.question &&
       poll.options.map(option => (
@@ -54,24 +57,27 @@ class Poll extends Component {
       <div className="flex-basic-column" style={{ margin: "35px 0 0 0" }}>
         <h3>{poll.question}</h3>
         {answers}
-        <Link to="/home">
+        {userIdAuth === userIdPoll ? (
           <button
             className="vote-btn delete-btn"
             onClick={this.handlePollDelete}
           >
             delete
           </button>
-        </Link>
+        ) : null}
+
         {poll.options && <Pie data={data} />}
       </div>
     );
   }
 }
 
-export default connect(
-  state => ({
-    poll: state.currentPoll,
-    auth: state.auth
-  }),
-  { vote, deletePoll }
-)(Poll);
+export default withRouter(
+  connect(
+    state => ({
+      poll: state.currentPoll,
+      auth: state.auth
+    }),
+    { vote, deletePoll }
+  )(Poll)
+);

@@ -3,7 +3,11 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 const ErrorMessage = ({ error }) => (
-  <React.Fragment>{error && <div>{error.message}</div>}</React.Fragment>
+  <React.Fragment>
+    {error && (
+      <div style={{ textAlign: "center", color: "red" }}>{error.message}</div>
+    )}
+  </React.Fragment>
 );
 
 ErrorMessage.propTypes = {
