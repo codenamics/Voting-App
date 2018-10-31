@@ -4,7 +4,7 @@ import ErrorMessage from "../components/ErrorMessage";
 
 const Home = props => {
   return (
-    <div>
+    <div className="home flex">
       <ErrorMessage />
       <Polls {...props} />
     </div>

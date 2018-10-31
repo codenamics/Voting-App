@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { vote, deletePoll } from "../store/actions/polls";
 import { Pie } from "react-chartjs-2";
 
@@ -29,6 +30,7 @@ class Poll extends Component {
       poll.question &&
       poll.options.map(option => (
         <button
+          className="vote-btn"
           onClick={() => vote(poll._id, { answer: option.title })}
           key={option._id}
         >
@@ -49,10 +51,17 @@ class Poll extends Component {
     };
 
     return (
-      <div>
+      <div className="flex-basic-column" style={{ margin: "35px 0 0 0" }}>
         <h3>{poll.question}</h3>
-        <p>{answers}</p>
-        <button onClick={this.handlePollDelete}>delete</button>
+        {answers}
+        <Link to="/home">
+          <button
+            className="vote-btn delete-btn"
+            onClick={this.handlePollDelete}
+          >
+            delete
+          </button>
+        </Link>
         {poll.options && <Pie data={data} />}
       </div>
     );

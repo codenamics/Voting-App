@@ -21,7 +21,11 @@ class Polls extends Component {
     const { polls, auth, getPolls, getUserPolls } = this.props;
 
     const allPolls = polls.map(poll => (
-      <li onClick={() => this.handleSelect(poll._id)} key={poll._id}>
+      <li
+        className="single-poll"
+        onClick={() => this.handleSelect(poll._id)}
+        key={poll._id}
+      >
         {poll.question}
       </li>
     ));
@@ -29,9 +33,13 @@ class Polls extends Component {
       <Fragment>
         {auth.isAuthenticated ? (
           <div>
-            <button onClick={getPolls}>All Polls</button>
-            <button onClick={getUserPolls}>My Polls</button>
-            <ul>{allPolls}</ul>
+            <button className="polls-btn" onClick={getPolls}>
+              All Polls
+            </button>
+            <button className="polls-btn" onClick={getUserPolls}>
+              My Polls
+            </button>
+            <ul className="polls">{allPolls}</ul>
           </div>
         ) : null}
       </Fragment>

@@ -28,8 +28,8 @@ class Auth extends Component {
     const { username, password } = this.state;
     const { headline } = this.props;
     return (
-      <div className="form">
-        <form onSubmit={this.handleSubmit}>
+      <div className="flex-basic">
+        <form style={{ margin: "-10vh 0 0 0" }} onSubmit={this.handleSubmit}>
           <h1>{headline}</h1>
           <label className="label" htmlFor="username">
             Username

@@ -4,9 +4,40 @@
     justify-content: center;
     align-items: center;
     margin-top: -10vh;
+    flex-direction: column;
 
     h1 {
         font-size: 55px;
         text-align: center;
+    }
+
+    &__cta {
+        display: flex;
+
+        a {
+            margin: 0 10px;
+            padding: 13px 10px;
+            min-width: 200px;
+            margin-top: 25px;
+            height: 44px;
+            text-align: center;
+            background: none;
+            border: 1px solid #00d664;
+            border-radius: 25px;
+            color: #00d664;
+            transition: 0.2s;
+            cursor: pointer;
+            font-style: normal;
+            font-weight: normal;
+            transition: all 0.6s ease;
+            outline: none;
+            font-size: 14px;
+
+            &:hover {
+                background: #00d664;
+                color: #fff;
+
+            }
+        }
     }
 }

@@ -33,7 +33,7 @@ const NavBar = ({ auth, logout }) => {
                 </Link>
               </li>
               <li>
-                <Link to="/poll/new">New</Link>
+                <Link to="/poll/new">New Poll</Link>
               </li>
               <li>Logged in as {auth.user.username}</li>
             </React.Fragment>

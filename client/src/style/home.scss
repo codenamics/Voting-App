@@ -1,0 +1,48 @@
+.home {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.polls-btn {
+    margin: 0 5px;
+    padding: 13px 10px;
+    min-width: 200px;
+    margin-top: 25px;
+    height: 44px;
+    text-align: center;
+    background: none;
+    border: 1px solid #00d664;
+    border-radius: 25px;
+    color: #00d664;
+    transition: 0.2s;
+    cursor: pointer;
+    font-style: normal;
+    font-weight: normal;
+    transition: all 0.6s ease;
+    outline: none;
+    font-size: 14px;
+
+    &:hover {
+        background: #00d664;
+        color: #fff;
+
+    }
+}
+
+.polls {
+    margin-top: 55px;
+}
+
+.single-poll {
+    color: #818ba2;
+    font-size: 22px;
+    text-align: left;
+    padding: 10px 25px;
+    margin: 10px 10px;
+    border: 1px solid #00d664;
+}

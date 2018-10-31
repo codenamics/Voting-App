@@ -31,6 +31,12 @@
                 font-size: 13px;
                 color: #00d664;
                 font-weight: 700;
+                transition: all 0.2s;
+                padding-bottom: 10px;
+
+                &:hover {
+                    border-bottom: 3px solid #00d664;
+                }
             }
         }
     }
@@ -99,7 +105,10 @@
         a {
             color: #00d664;
             text-transform: uppercase;
+
+
         }
+
 
     }
 

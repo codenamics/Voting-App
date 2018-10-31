@@ -1,0 +1,40 @@
+.vote-btn {
+    padding: 13px 10px;
+    max-width: 200px;
+    width: 100%;
+    margin-top: 20px;
+    height: 44px;
+    text-align: center;
+    background: #00d664;
+    border: none;
+    border-radius: 25px;
+    color: #fff;
+    transition: 0.2s;
+    cursor: pointer;
+    font-style: normal;
+    font-weight: normal;
+    transition: all 0.4s ease;
+    outline: none;
+    font-size: 14px;
+
+    &:hover {
+        background: none;
+        color: #00d664;
+        border: 1px solid #00d664;
+
+    }
+}
+
+.delete-btn {
+    background: none;
+    color: black;
+    border: 1px solid red;
+    width: 200px;
+
+    &:hover {
+        background: red;
+        color: #fff;
+        border: none;
+
+    }
+}

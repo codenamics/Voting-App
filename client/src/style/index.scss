@@ -1,6 +1,8 @@
 @import 'nav.scss';
-@import 'form.scss';
+@import 'forms.scss';
 @import 'dashboard.scss';
+@import 'home.scss';
+@import 'voting.scss';
 
 * {
   margin: 0;
@@ -20,4 +22,31 @@ code {
 
 a {
   text-decoration: none;
+}
+
+ul {
+  list-style: none;
+
+}
+
+.flex-basic {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-basic-column {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.flex-basic-n90 {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
