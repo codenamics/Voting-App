@@ -9,6 +9,7 @@ NodeJS backend for voting app + React on front
 * [x] **MongoDB**
 * [x] **React/Redux**
 * [x] **NPM**
+* [x] **ChartJS**
 
 ### Setup
 
