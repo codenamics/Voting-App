@@ -11,6 +11,20 @@ NodeJS backend for voting app + React on front
 * [x] **NPM**
 * [x] **ChartJS**
 
+
+
+### Before any action create in root directory 
+
+```bash
+.env
+```
+and put there 
+
+```bash
+mongoURI='your link to mlab'
+SECRET='yoursecret'
+```
+
 ### Setup
 
 ```bash
