@@ -1,13 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
-
 import jwt_decode from "jwt-decode";
 import store from "./store/store";
 import { setToken, setCurrentUser, logout } from "./store/actions";
-
-import Routes from "./components/Routes";
-import NavBar from "./layout/NavBar";
+import Routes from "./routes";
 
 if (localStorage.jwtToken) {
   setToken(localStorage.jwtToken);
@@ -25,19 +22,12 @@ if (localStorage.jwtToken) {
   }
 }
 
-class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <Router>
-          <React.Fragment>
-            <NavBar />
-            <Routes />
-          </React.Fragment>
-        </Router>
-      </Provider>
-    );
-  }
-}
+const App = () => (
+  <Provider store={store}>
+    <Router>
+      <Routes />
+    </Router>
+  </Provider>
+);
 
 export default App;

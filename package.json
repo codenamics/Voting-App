@@ -4,18 +4,27 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "client"
+    ]
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "concurrently": "^3.5.0",
     "cors": "^2.8.4",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.3.4",
+    "morgan": "^1.7.0",
     "validator": "^10.8.0"
   },
   "devDependencies": {

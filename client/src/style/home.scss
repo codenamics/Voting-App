@@ -1,48 +1,73 @@
 .home {
-    height: 90vh;
-    display: flex;
-    justify-content: center;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+}
+
+.error-message-container {
+  position: fixed;
+  z-index: 1010;
+  width: 100%;
+  top: 16px;
+  left: 0;
+  text-align: center;
+}
+
+.error-message {
+  color: #f5222d;
+  padding: 10px 16px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: #fff;
+  display: inline-block;
+  pointer-events: all;
 }
 
 .flex {
-    display: flex;
+  display: flex;
 }
 
 .polls-btn {
-    margin: 0 5px;
-    padding: 13px 10px;
-    min-width: 200px;
-    margin-top: 25px;
-    height: 44px;
-    text-align: center;
-    background: none;
-    border: 1px solid #00d664;
-    border-radius: 25px;
-    color: #00d664;
-    transition: 0.2s;
-    cursor: pointer;
-    font-style: normal;
-    font-weight: normal;
-    transition: all 0.6s ease;
-    outline: none;
-    font-size: 14px;
+  margin: 0 5px;
+  padding: 13px 10px;
+  min-width: 200px;
+  margin-top: 25px;
+  height: 44px;
+  text-align: center;
+  background: none;
+  border: 1px solid #00d664;
+  border-radius: 25px;
+  color: #00d664;
+  transition: 0.2s;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: normal;
+  transition: all 0.6s ease;
+  outline: none;
+  font-size: 14px;
 
-    &:hover {
-        background: #00d664;
-        color: #fff;
-
-    }
+  &:hover {
+    background: #00d664;
+    color: #fff;
+  }
 }
 
 .polls {
-    margin-top: 55px;
+  margin-top: 55px;
+}
+
+.no-polls {
+  margin-top: 55px;
+  text-align: center;
+  color: #a73c2c;
 }
 
 .single-poll {
-    color: #818ba2;
-    font-size: 22px;
-    text-align: left;
-    padding: 10px 25px;
-    margin: 10px 10px;
-    border: 1px solid #00d664;
+  color: #818ba2;
+  font-size: 22px;
+  text-align: left;
+  padding: 10px 25px;
+  margin: 10px 10px;
+  border: 1px solid #00d664;
 }

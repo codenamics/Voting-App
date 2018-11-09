@@ -1,7 +1,12 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { vote, deletePoll, getPolls } from "../store/actions/polls";
+import {
+  vote,
+  deletePoll,
+  getPolls,
+  getCurrentPoll
+} from "../store/actions/polls";
 import { Pie } from "react-chartjs-2";
 
 const color = () => {
@@ -13,20 +18,16 @@ const color = () => {
   );
 };
 
-class Poll extends Component {
-  constructor(props) {
-    super(props);
-    this.handlePollDelete = this.handlePollDelete.bind(this);
-  }
-  componentWillUnmount() {
-    const { getPolls } = this.props;
-    getPolls();
-  }
-  handlePollDelete() {
-    const { deletePoll, id, history } = this.props;
-    deletePoll(id);
-    history.push("/home");
-  }
+class ShowCurrentPoll extends PureComponent {
+  componentDidMount = () => {
+    const { id } = this.props.match.params;
+    this.props.getCurrentPoll(id);
+  };
+
+  handlePollDelete = () => {
+    this.props.deletePoll(this.props.match.params.id);
+    this.props.history.push("/home");
+  };
 
   render() {
     const { poll, vote, auth } = this.props;
@@ -82,6 +83,6 @@ export default withRouter(
       poll: state.currentPoll,
       auth: state.auth
     }),
-    { vote, deletePoll, getPolls }
-  )(Poll)
+    { vote, deletePoll, getPolls, getCurrentPoll }
+  )(ShowCurrentPoll)
 );

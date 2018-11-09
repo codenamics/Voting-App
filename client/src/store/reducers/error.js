@@ -1,21 +1,14 @@
-import {
-  ADD_ERROR,
-  REMOVE_ERROR
-} from '../actionTypes';
+import { ADD_ERROR, REMOVE_ERROR } from "../../types";
 
-export default (state = {
-  message: null
-}, action) => {
+const errorReducer = (state = "", action) => {
   switch (action.type) {
     case ADD_ERROR:
-      return { ...state,
-        message: action.error
-      };
+      return action.error;
     case REMOVE_ERROR:
-      return { ...state,
-        message: null
-      };
+      return "";
     default:
       return state;
   }
 };
+
+export default errorReducer;
